@@ -2,7 +2,7 @@ package main
 
 import rl "github.com/gen2brain/raylib-go/raylib"
 import "strconv"
-import "fmt"
+
 //ball values
 type Ball struct{
 	cordX int32
@@ -107,7 +107,7 @@ func pongGame(){
 		//the W key
 		if paddleLeft.cordY <= 0 {
 			paddleLeft.cordY = 0
-			fmt.Println("reachedup")
+			
 		}else{
 			paddleLeft.cordY -= paddleLeft.speed
 		}
@@ -115,7 +115,7 @@ func pongGame(){
 	if rl.IsKeyDown(83){	
 		if paddleLeft.cordY > height - paddleLeft.height{
 			paddleLeft.cordY = height - paddleLeft.height
-			fmt.Println("reached")
+			
 		}else{
 			paddleLeft.cordY += paddleLeft.speed
 		}
@@ -145,8 +145,7 @@ func pongGame(){
 
 	//end of controles	
 	
-	ga := int(rl.GetFrameTime())
-	age := strconv.Itoa(ga)
+	
 	
 		//begin Rendering on screen
 		rl.BeginDrawing()
@@ -155,8 +154,6 @@ func pongGame(){
 		paddleRight.Draw(paddleRight.cordX,paddleRight.cordY,paddleRight.width,paddleRight.height)
 		ball.Draw(ball.cordX,ball.cordY)
 		paddleLeft.Draw(paddleLeft.cordX,paddleLeft.cordY,paddleLeft.width,paddleLeft.height)
-
-		rl.DrawText(age,width /2,4,50,rl.White)
 
 		rl.DrawText(strconv.Itoa(paddleLeftScore),4,4,30,rl.White)
 		rl.DrawText(strconv.Itoa(paddleRightScore),width -20,4,30,rl.White)
